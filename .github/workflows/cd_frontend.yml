@@ -26,6 +26,13 @@ jobs:
             DATABASE_URL=${{secrets.DATABASE_URL}}
           push: true
           tags: kuntalmajee2557/todo-app-frontend:${{ github.sha }}
+
+      - name: deploy to the vm
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+          chmod 700 /home/runner/ssh_key
+          ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@15.206.172.121 -t "docker stop user_frontend && docker rm user_frontend && docker run --name user_frontend -d -p 3000:3000 kuntalmajee2557/todo-app-frontend:${{ github.sha }}"
+
  
 
 
