@@ -1,10 +1,8 @@
 import React from 'react'
-import { prismaClient } from 'db/client'
 
-const page = async () => {
-  const users = await prismaClient.user.findMany({});
+const page = () => {
   return (
-    <div>{JSON.stringify(users)}</div>
+    <div>page</div>
   )
 }
 
