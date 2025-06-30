@@ -23,7 +23,7 @@ jobs:
           context: .
           file: ./docker/Dockerfile.backend
           push: true
-          tags: kuntl/todo-app-backend:${{ github.sha }}
+          tags: ${{DOCKERHUB_USERNAME}}/todo-app-backend:${{ github.sha }}
  
 
 
